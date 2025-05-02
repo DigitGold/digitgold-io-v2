@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Hero from '../components/Hero';
 import Timeline from '../components/Timeline';
@@ -12,9 +13,11 @@ import Footer from '../components/Footer';
 import BackgroundNodules from '../components/BackgroundNodules';
 
 const Landing: React.FC = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     // Update document title
-    document.title = 'DigitGold | L\'or du futur, frappé sur la blockchain';
+    document.title = t('meta.title');
     
     // Exit intent detection for lead capture
     const handleExitIntent = (e: MouseEvent) => {
@@ -33,7 +36,7 @@ const Landing: React.FC = () => {
     return () => {
       document.removeEventListener('mouseleave', handleExitIntent);
     };
-  }, []);
+  }, [t]);
   
   return (
     <div className="relative">

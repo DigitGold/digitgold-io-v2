@@ -1,48 +1,36 @@
 import React, { useRef, useEffect } from 'react';
 import { Shield, CheckCircle2, Lock, FileCheck, Link2 } from 'lucide-react';
-
-interface TrustFeature {
-  id: number;
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  details?: string[];
-}
+import { useTranslation } from 'react-i18next';
 
 const TrustSection: React.FC = () => {
   const featureRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const { t } = useTranslation();
   
-  const trustFeatures: TrustFeature[] = [
+  const trustFeatures = [
     {
       id: 1,
       icon: <Shield className="w-10 h-10 text-gold" />,
-      title: "Stocké en Europe",
-      description: "Votre or est stocké dans des installations hautement sécurisées en Europe, avec des normes de sécurité militaires et une assurance complète."
+      title: t('trust.features.storage.title'),
+      description: t('trust.features.storage.description')
     },
     {
       id: 2,
       icon: <CheckCircle2 className="w-10 h-10 text-gold" />,
-      title: "Audit semestriel par un tiers",
-      description: "Des auditeurs indépendants vérifient l'existence et la quantité de l'or physique tous les six mois. Les rapports sont rendus publics et accessibles à tous."
+      title: t('trust.features.audit.title'),
+      description: t('trust.features.audit.description')
     },
     {
       id: 3,
       icon: <FileCheck className="w-10 h-10 text-gold" />,
-      title: "Certificats & Blockchain Proofs",
-      description: "Chaque NFT est associé à un certificat numérique signé et une traçabilité complète via la blockchain Polygon.",
-      details: [
-        "Certificat numérique unique pour chaque NFT",
-        "Lien IPFS du certificat stocké publiquement",
-        "Hash de métadonnées ancré sur la blockchain",
-        "Audits indépendants 2x/an, résultats accessibles",
-        "Smart contract open source vérifié"
-      ]
+      title: t('trust.features.certificates.title'),
+      description: t('trust.features.certificates.description'),
+      details: t('trust.features.certificates.details', { returnObjects: true })
     },
     {
       id: 4,
       icon: <Lock className="w-10 h-10 text-gold" />,
-      title: "Blockchain vérifiable",
-      description: "Chaque NFT est lié à un smart contract sur Polygon, offrant transparence et immuabilité. La propriété est inscrite de manière permanente et vérifiable."
+      title: t('trust.features.blockchain.title'),
+      description: t('trust.features.blockchain.description')
     }
   ];
   
@@ -72,14 +60,13 @@ const TrustSection: React.FC = () => {
   
   return (
     <section id="trust" className="section relative bg-gradient-radial from-midnight-light to-midnight">
-      {/* Gold particle overlay effect */}
       <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/6640962/pexels-photo-6640962.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2')] bg-cover bg-fixed bg-center opacity-10 z-0"></div>
       
       <div className="container-custom relative z-10">
         <div className="text-center mb-16">
-          <h2 className="section-title">Pourquoi faire <span className="text-gold">confiance</span> à DigitGold</h2>
+          <h2 className="section-title">{t('trust.title')}</h2>
           <p className="section-subtitle mx-auto">
-            Nous avons construit notre protocole sur des principes inébranlables de sécurité, transparence et confiance
+            {t('trust.subtitle')}
           </p>
         </div>
         
@@ -121,7 +108,7 @@ const TrustSection: React.FC = () => {
         <div className="mt-16 text-center">
           <div className="inline-block bg-midnight-dark/80 backdrop-blur-md p-6 rounded-xl border border-gold/20 max-w-3xl">
             <p className="italic text-lg text-gold-light">
-              "DigitGold n'est ni une spéculation, ni une série d'art PFP. C'est une passerelle entre valeur réelle et innovation, pensée pour durer."
+              {t('trust.quote')}
             </p>
           </div>
         </div>

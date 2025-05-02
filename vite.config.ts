@@ -7,5 +7,8 @@ export default defineConfig({
     hmr: {
       overlay: false
     }
+  },
+  optimizeDeps: {
+    exclude: ['node_modules']
   }
 });
