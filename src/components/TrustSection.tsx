@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 const TrustSection: React.FC = () => {
   const featureRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { t } = useTranslation();
-  
+
   const trustFeatures = [
     {
       id: 1,
@@ -24,7 +24,7 @@ const TrustSection: React.FC = () => {
       icon: <FileCheck className="w-10 h-10 text-gold" />,
       title: t('trust.features.certificates.title'),
       description: t('trust.features.certificates.description'),
-      details: t('trust.features.certificates.details', { returnObjects: true })
+      details: t('trust.features.certificates.details', { returnObjects: true }) as string[]
     },
     {
       id: 4,
@@ -33,7 +33,7 @@ const TrustSection: React.FC = () => {
       description: t('trust.features.blockchain.description')
     }
   ];
-  
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -46,30 +46,28 @@ const TrustSection: React.FC = () => {
       },
       { threshold: 0.1, rootMargin: '0px 0px -10% 0px' }
     );
-    
+
     featureRefs.current.forEach((feature) => {
       if (feature) observer.observe(feature);
     });
-    
+
     return () => {
       featureRefs.current.forEach((feature) => {
         if (feature) observer.unobserve(feature);
       });
     };
   }, []);
-  
+
   return (
     <section id="trust" className="section relative bg-gradient-radial from-midnight-light to-midnight">
       <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/6640962/pexels-photo-6640962.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=2')] bg-cover bg-fixed bg-center opacity-10 z-0"></div>
-      
+
       <div className="container-custom relative z-10">
         <div className="text-center mb-16">
           <h2 className="section-title">{t('trust.title')}</h2>
-          <p className="section-subtitle mx-auto">
-            {t('trust.subtitle')}
-          </p>
+          <p className="section-subtitle mx-auto">{t('trust.subtitle')}</p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {trustFeatures.map((feature, index) => (
             <div
@@ -88,7 +86,7 @@ const TrustSection: React.FC = () => {
                 <div>
                   <h3 className="text-2xl font-serif text-gold mb-3">{feature.title}</h3>
                   <p className="text-offwhite/80 leading-relaxed">{feature.description}</p>
-                  
+
                   {feature.details && (
                     <div className="grid md:grid-cols-2 gap-4 mt-6 pt-6 border-t border-gold/10">
                       {feature.details.map((detail, i) => (
@@ -104,12 +102,10 @@ const TrustSection: React.FC = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="mt-16 text-center">
           <div className="inline-block bg-midnight-dark/80 backdrop-blur-md p-6 rounded-xl border border-gold/20 max-w-3xl">
-            <p className="italic text-lg text-gold-light">
-              {t('trust.quote')}
-            </p>
+            <p className="italic text-lg text-gold-light">{t('trust.quote')}</p>
           </div>
         </div>
       </div>

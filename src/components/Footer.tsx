@@ -1,7 +1,11 @@
-import React from 'react';
-import { ExternalLink, Mail, Shield, MessagesSquare } from 'lucide-react';
+import React, { useRef } from 'react';
+import { ExternalLink, Mail, Shield } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Footer: React.FC = () => {
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-midnight-dark text-offwhite/80 pt-16 pb-8">
       <div className="container-custom">
@@ -11,71 +15,78 @@ const Footer: React.FC = () => {
               Digit<span className="text-stroke">Gold</span>
             </div>
             <p className="max-w-xs">
-              L'or du futur, frappé sur la blockchain. Une nouvelle approche du patrimoine digital.
+              {t('footer.about')}
             </p>
           </div>
-          
+
           <div>
-            <h3 className="font-serif text-xl text-offwhite mb-4">Liens Rapides</h3>
+            <h3 className="font-serif text-xl text-offwhite mb-4">
+              {t('footer.quickLinks.title')}
+            </h3>
             <ul className="space-y-3">
               <li>
                 <a href="#story" className="hover:text-gold transition-colors inline-flex items-center">
-                  Notre Histoire
+                  {t('footer.quickLinks.story')}
                 </a>
               </li>
               <li>
                 <a href="#trust" className="hover:text-gold transition-colors inline-flex items-center">
-                  Garanties et Transparence
+                  {t('footer.quickLinks.trust')}
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://opensea.io" 
-                  target="_blank" 
+                <a
+                  href="https://opensea.io"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-gold transition-colors inline-flex items-center"
                 >
-                  OpenSea <ExternalLink className="w-3 h-3 ml-1" />
+                  {t('footer.quickLinks.opensea')} <ExternalLink className="w-3 h-3 ml-1" />
                 </a>
               </li>
             </ul>
           </div>
-          
+
           <div>
-            <h3 className="font-serif text-xl text-offwhite mb-4">Confiance</h3>
+            <h3 className="font-serif text-xl text-offwhite mb-4">
+              {t('footer.trust.title')}
+            </h3>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <Shield className="w-5 h-5 mr-2 text-gold flex-shrink-0 mt-0.5" />
-                <span>Audits semestriels par un tiers</span>
+                <span>{t('footer.trust.audit')}</span>
               </li>
               <li className="flex items-start">
                 <Shield className="w-5 h-5 mr-2 text-gold flex-shrink-0 mt-0.5" />
-                <span>Stockage sécurisé en Europe</span>
+                <span>{t('footer.trust.storage')}</span>
               </li>
               <li className="flex items-start">
                 <Shield className="w-5 h-5 mr-2 text-gold flex-shrink-0 mt-0.5" />
-                <span>Blockchain Polygon vérifiable</span>
+                <span>{t('footer.trust.blockchain')}</span>
               </li>
             </ul>
           </div>
-          
+
           <div>
-            <h3 className="font-serif text-xl text-offwhite mb-4">Contact</h3>
+            <h3 className="font-serif text-xl text-offwhite mb-4">
+              {t('footer.contact.title')}
+            </h3>
             <ul className="space-y-3">
               <li>
-                <a 
-                  href="mailto:contact@digitgold.io" 
+                <a
+                  href="mailto:contact@digitgold.io"
                   className="hover:text-gold transition-colors inline-flex items-center"
                 >
                   <Mail className="w-5 h-5 mr-2" />
-                  contact@digitgold.io
+                  {t('footer.contact.email')}
                 </a>
               </li>
               <li>
                 <div className="flex space-x-3 mt-4">
-                  <a 
-                    href="https://x.com" 
-                    target="_blank" 
+                  {/* Twitter */}
+                  <a
+                    href="https://x.com"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-full bg-midnight hover:bg-midnight-light flex items-center justify-center transition-colors"
                   >
@@ -83,9 +94,10 @@ const Footer: React.FC = () => {
                       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                     </svg>
                   </a>
-                  <a 
-                    href="https://discord.com" 
-                    target="_blank" 
+                  {/* Discord */}
+                  <a
+                    href="https://discord.com"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-full bg-midnight hover:bg-midnight-light flex items-center justify-center transition-colors"
                   >
@@ -98,16 +110,16 @@ const Footer: React.FC = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-midnight-light pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-offwhite/60 mb-4 md:mb-0">
-              © {new Date().getFullYear()} DigitGold. Tous droits réservés.
+              {t('footer.legal.copyright').replace('{{year}}', new Date().getFullYear().toString())}
             </p>
             <div className="flex space-x-4 text-sm text-offwhite/60">
-              <a href="#" className="hover:text-gold transition-colors">Mentions Légales</a>
-              <a href="#" className="hover:text-gold transition-colors">Politique de Confidentialité</a>
-              <a href="#" className="hover:text-gold transition-colors">CGV</a>
+              <a href="#" className="hover:text-gold transition-colors">{t('footer.legal.terms')}</a>
+              <a href="#" className="hover:text-gold transition-colors">{t('footer.legal.privacy')}</a>
+              <a href="#" className="hover:text-gold transition-colors">{t('footer.legal.conditions')}</a>
             </div>
           </div>
         </div>

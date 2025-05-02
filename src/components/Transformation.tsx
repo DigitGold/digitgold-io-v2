@@ -1,15 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface TransformationFeature {
-  id: string;
+  id: 'burn' | 'staking' | 'fusion';
   icon: React.ReactNode;
-  title: string;
-  description: string;
 }
 
 const Transformation: React.FC = () => {
-  const [activeFeature, setActiveFeature] = useState('burn');
+  const [activeFeature, setActiveFeature] = useState<'burn' | 'staking' | 'fusion'>('burn');
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   const features: TransformationFeature[] = [
     {
@@ -20,10 +20,7 @@ const Transformation: React.FC = () => {
           alt="Clé DigitGold"
           className="w-6 h-12 object-contain"
         />
-      ),
-      title: 'Programme de Burn',
-      description:
-        "80% des NFTs seront progressivement brûlés sur 5 ans, augmentant mécaniquement la rareté et la valeur potentielle des 20% restants. Chaque opération de burn est publique, traçable et irréversible.",
+      )
     },
     {
       id: 'staking',
@@ -33,10 +30,7 @@ const Transformation: React.FC = () => {
           alt="Icône Clé cadenassée"
           className="w-6 h-12 object-contain"
         />
-      ),
-      title: 'Staking Obligatoire',
-      description:
-        "Pour échanger votre NFT contre son équivalent en or physique, un staking minimum de 12 mois est requis. Cette règle crée une pression temporelle favorable et récompense les détenteurs de long terme.",
+      )
     },
     {
       id: 'fusion',
@@ -44,13 +38,10 @@ const Transformation: React.FC = () => {
         <img
           src="/assets/images/fusionnftsdigirgold.png"
           alt="NFT fusionnés"
-          className="w-6 h-3 object-contain"
+          className="w-24 h-12 object-contain"
         />
-      ),
-      title: 'Fusion Sur-Mesure',
-      description:
-        "Fusionnez plusieurs NFTs pour créer une pièce exclusive de plus grande valeur. Par exemple, combinez 3 NFTs de 2g pour obtenir un NFT unique de 6g avec un design exclusif frappé à la demande.",
-    },
+      )
+    }
   ];
 
   useEffect(() => {
@@ -81,10 +72,11 @@ const Transformation: React.FC = () => {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="section-title">
-            Mécanismes de <span className="text-gold">Transformation</span>
+            {t('transformation.title').split(' ')[0]}{' '}
+            <span className="text-gold">{t('transformation.title').split(' ')[1]}</span>
           </h2>
           <p className="section-subtitle mx-auto">
-            Grâce à ces mécanismes innovants, votre NFT devient bien plus qu'un simple actif numérique
+            {t('transformation.subtitle')}
           </p>
         </div>
 
@@ -104,7 +96,9 @@ const Transformation: React.FC = () => {
                 <div className="flex items-center justify-center mb-2">
                   {feature.icon}
                 </div>
-                <span className="font-serif">{feature.title}</span>
+                <span className="font-serif">
+                  {t(`transformation.features.${feature.id}.title`)}
+                </span>
               </button>
             ))}
           </div>
@@ -120,19 +114,16 @@ const Transformation: React.FC = () => {
               >
                 <div className="flex flex-col md:flex-row gap-8 items-center">
                   <div className="md:w-1/2">
-                    <h3 className="text-3xl font-serif text-gold mb-6">{feature.title}</h3>
+                    <h3 className="text-3xl font-serif text-gold mb-6">
+                      {t(`transformation.features.${feature.id}.title`)}
+                    </h3>
                     <p className="text-lg text-offwhite/80 leading-relaxed mb-6">
-                      {feature.description}
+                      {t(`transformation.features.${feature.id}.description`)}
                     </p>
                     <div className="flex">
                       <div className="p-4 bg-gold/10 rounded-lg">
                         <p className="text-sm text-gold italic">
-                          {feature.id === 'burn' &&
-                            "Une stratégie de rareté programmée qui renforce la valeur dans le temps."}
-                          {feature.id === 'staking' &&
-                            "Un mécanisme d'engagement qui favorise une vision long terme."}
-                          {feature.id === 'fusion' &&
-                            "Une personnalisation exclusive qui augmente la valeur émotionnelle."}
+                          {t(`transformation.features.${feature.id}.note`)}
                         </p>
                       </div>
                     </div>
@@ -147,20 +138,20 @@ const Transformation: React.FC = () => {
                           <img
                             src="/assets/images/burnkeyssite.png"
                             alt="Clé DigitGold"
-                            className="w-20 h-20 object-contain"
+                            className="w-22 h-22 object-contain"
                           />
                         </div>
                       </div>
                     )}
 
                     {feature.id === 'staking' && (
-                      <div className="relative w-64 h-64 flex items-center justify-center">
-                        <div className="w-48 h-48 rounded-full border-4 border-dashed border-gold/40 animate-spin-slow flex items-center justify-center">
-                          <div className="w-32 h-32 bg-gold/20 rounded-full flex items-center justify-center overflow-hidden">
+                      <div className="relative w-72 h-72 flex items-center justify-center">
+                        <div className="w-68 h-68 rounded-full border-4 border-dashed border-gold/40 animate-spin-slow flex items-center justify-center">
+                          <div className="w-64 h-64 bg-gold/20 rounded-full flex items-center justify-center overflow-hidden">
                             <img
                               src="/assets/images/stackingdigitgoldkeys.png"
                               alt="Clé cadenassée"
-                              className="object-contain w-20 h-20"
+                              className="object-contain w-21 h-21"
                             />
                           </div>
                         </div>
