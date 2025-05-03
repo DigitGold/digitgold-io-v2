@@ -62,10 +62,11 @@ const Timeline: React.FC = () => {
     <section id="story" ref={sectionRef} className="section bg-midnight-light relative">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="section-title">{t('story.title')} <span className="text-gold">{t('story.subtitle')}</span></h2>
-          <p className="section-subtitle mx-auto">
-            {t('story.subtitle')}
-          </p>
+        <h2 className="section-title">
+  {t('story.title.first')} <span className="text-gold">{t('story.title.highlight')}</span></h2>
+            <p className="section-subtitle mx-auto">
+              {t('story.subtitle')}
+            </p>
         </div>
         
         <div className="relative">

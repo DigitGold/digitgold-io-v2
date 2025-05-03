@@ -20,7 +20,10 @@ export const fr = {
     },
   },
   story: {
-    title: "Notre Histoire",
+    title: {
+      first: "Notre Histoire",
+      highlight: ""
+    },
     subtitle:
       "Une vision qui transforme la façon dont nous percevons la valeur et le patrimoine numérique",
     blocks: {
@@ -47,7 +50,7 @@ export const fr = {
     },
   },
   trust: {
-    title: "Pourquoi faire confiance à DigitGold",
+    title: "Pourquoi faire confiance à DigitGold ?",
     subtitle:
       "Nous avons construit notre protocole sur des principes inébranlables de sécurité, transparence et confiance",
     features: {
@@ -83,8 +86,8 @@ export const fr = {
       "DigitGold n'est ni une spéculation, ni une série d'art PFP. C'est une passerelle entre valeur réelle et innovation, pensée pour durer.",
   },
   transformation: {
-    title: "Mécanismes de Transformation",
-    subtitle:
+    title: "Mécanismes de Conversion",
+        subtitle:
       "Grâce à ces mécanismes innovants, votre NFT devient bien plus qu'un simple actif numérique",
     features: {
       burn: {

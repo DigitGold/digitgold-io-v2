@@ -72,8 +72,8 @@ const Transformation: React.FC = () => {
       <div className="container-custom">
         <div className="text-center mb-16">
           <h2 className="section-title">
-            {t('transformation.title').split(' ')[0]}{' '}
-            <span className="text-gold">{t('transformation.title').split(' ')[1]}</span>
+            {t('transformation.title')}
+            <span className="text-gold"> {t('')}</span>
           </h2>
           <p className="section-subtitle mx-auto">
             {t('transformation.subtitle')}

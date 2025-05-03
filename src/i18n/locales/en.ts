@@ -19,8 +19,11 @@ export const en = {
       secondary: "Our Story",
     },
   },
-  story: {
-    title: "Our Story",
+      story: {
+        title: {
+          first: "Our",
+          highlight: "Story"
+        },
     subtitle:
       "A vision that transforms how we perceive value and digital heritage",
     blocks: {
@@ -47,7 +50,7 @@ export const en = {
     },
   },
   trust: {
-    title: "Why Trust DigitGold",
+    title: "Why Trust DigitGold ?",
     subtitle:
       "We've built our protocol on unshakeable principles of security, transparency, and trust",
     features: {
@@ -83,8 +86,8 @@ export const en = {
       "DigitGold is neither speculation nor a PFP art series. It's a bridge between real value and innovation, designed to last.",
   },
   transformation: {
-    title: "Transformation Mechanisms",
-    subtitle:
+    title: "Conversion Mechanisms",
+      subtitle:
       "Through these innovative mechanisms, your NFT becomes much more than just a digital asset",
     features: {
       burn: {
